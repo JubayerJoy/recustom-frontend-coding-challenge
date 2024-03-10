@@ -1,0 +1,18 @@
+import * as Types from '../../graphql/graphql-types.generated';
+
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
+export type OrgDetailsForDomainQueryVariables = Types.Exact<{
+  domainName: Types.Scalars['String']['input'];
+}>;
+
+
+export type OrgDetailsForDomainQuery = { __typename?: 'query_root', organization_domain: Array<{ __typename?: 'organization_domain', id: number, organization: { __typename?: 'organization', id: number, name: string, bio: string, organization_theme?: { __typename?: 'organization_theme', primaryColor?: string | null, secondaryColor?: string | null, successColor?: string | null, warningColor?: string | null, errorColor?: string | null, infoColor?: string | null, fontFamily?: Types.Font_Family_Enum | null, fontSize?: number | null, buttonRadius?: number | null } | null } }> };
+
+export type OrgDomainsListQueryVariables = Types.Exact<{ [key: string]: never; }>;
+
+
+export type OrgDomainsListQuery = { __typename?: 'query_root', organization_domain: Array<{ __typename?: 'organization_domain', id: number, name: string }> };
+
+
+export const OrgDetailsForDomainDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"orgDetailsForDomain"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"domainName"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"organization_domain"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"name"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"domainName"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"organization"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"bio"}},{"kind":"Field","name":{"kind":"Name","value":"organization_theme"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"primaryColor"}},{"kind":"Field","name":{"kind":"Name","value":"secondaryColor"}},{"kind":"Field","name":{"kind":"Name","value":"successColor"}},{"kind":"Field","name":{"kind":"Name","value":"warningColor"}},{"kind":"Field","name":{"kind":"Name","value":"errorColor"}},{"kind":"Field","name":{"kind":"Name","value":"infoColor"}},{"kind":"Field","name":{"kind":"Name","value":"fontFamily"}},{"kind":"Field","name":{"kind":"Name","value":"fontSize"}},{"kind":"Field","name":{"kind":"Name","value":"buttonRadius"}}]}}]}}]}}]}}]} as unknown as DocumentNode<OrgDetailsForDomainQuery, OrgDetailsForDomainQueryVariables>;
+export const OrgDomainsListDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"orgDomainsList"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"organization_domain"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]} as unknown as DocumentNode<OrgDomainsListQuery, OrgDomainsListQueryVariables>;

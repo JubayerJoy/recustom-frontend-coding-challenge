@@ -1,0 +1,13 @@
+query orgChannelsForDomain($domainName: String!) {
+  organization_domain(where: { name: { _eq: $domainName } }) {
+    id
+    organization {
+      id
+      channels(order_by: { order: asc }) {
+        id
+        alias
+        description
+      }
+    }
+  }
+}

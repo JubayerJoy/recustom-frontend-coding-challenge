@@ -1,0 +1,28 @@
+query orgDetailsForDomain($domainName: String!) {
+  organization_domain(where: { name: { _eq: $domainName } }) {
+    id
+    organization {
+      id
+      name
+      bio
+      organization_theme {
+        primaryColor
+        secondaryColor
+        successColor
+        warningColor
+        errorColor
+        infoColor
+        fontFamily
+        fontSize
+        buttonRadius
+      }
+    }
+  }
+}
+
+query orgDomainsList {
+  organization_domain {
+    id
+    name
+  }
+}
