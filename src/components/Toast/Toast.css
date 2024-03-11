@@ -1,0 +1,99 @@
+/* Toast.css */
+.toast {
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  height: Hug (64px);
+  top: 442.98px;
+  left: 20px;
+  padding: 16px;
+  border-radius: 6px;
+  border: 1px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: #ffffff;
+}
+
+.success {
+  border: 1px solid green;
+  color: green;
+}
+
+.danger {
+  border: 1px solid red;
+  color: red;
+}
+
+.avatar {
+  box-shadow: 0px 1px 2px 0px #00000014;
+  color: #6b7280;
+  background: #ffffff;
+}
+
+.message-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 10px;
+  align-items: center;
+}
+
+.message {
+  flex-grow: 1;
+  width: 100%;
+  font-family: TT Hoves Pro;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.description {
+  font-family: TT Hoves Pro;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+  font-variation-settings: "wdth" 100, "CTGR" 0;
+}
+
+.cta {
+  width: 91px;
+  height: 26px;
+  padding: 4px 12px;
+  border-radius: 100px;
+  border: 1px solid #000000;
+  color: #ffffff;
+  font-family: TT Hoves Pro;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.cta-success {
+  background: #00ac80;
+}
+
+.cta-danger {
+  background: #ff6464;
+}
+
+.cta-avatar {
+  background: #ffff00;
+  color: #112127;
+}
+
+.wrapper-desc {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
