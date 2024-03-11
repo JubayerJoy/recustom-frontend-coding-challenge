@@ -1,20 +1,7 @@
-import React from "react";
-import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import Image, { StaticImageData } from "next/image";
 import "./Toast.css";
-
-export enum ToastType {
-  SUCCESS = "success",
-  DANGER = "danger",
-  AVATAR = "avatar",
-}
-
-export interface ToastProps {
-  type: ToastType;
-  message: string;
-  cta?: boolean;
-  mobile?: boolean;
-  description?: string;
-}
+import { ToastType, ToastProps } from "./types";
 
 const Toast: React.FC<ToastProps> = ({
   type,
@@ -23,16 +10,29 @@ const Toast: React.FC<ToastProps> = ({
   cta = false,
   mobile = false,
 }) => {
-  const startImage =
-    type === ToastType.DANGER
-      ? description
-        ? require("./assets/danger_cta.png").default
-        : require("./assets/danger.png").default
-      : type === ToastType.SUCCESS
-      ? description
-        ? require("./assets/success_cta.png").default
-        : require("./assets/success.png").default
-      : require("./assets/avatar.png").default;
+  const [startImage, setStartImage] = useState<StaticImageData | null>(null);
+
+  useEffect(() => {
+    const loadStartImage = async () => {
+      let imagePath: StaticImageData;
+
+      if (type === ToastType.DANGER) {
+        imagePath = description
+          ? (await import("./assets/danger_cta.png")).default
+          : (await import("./assets/danger.png")).default;
+      } else if (type === ToastType.SUCCESS) {
+        imagePath = description
+          ? (await import("./assets/success_cta.png")).default
+          : (await import("./assets/success.png")).default;
+      } else {
+        imagePath = (await import("./assets/avatar.png")).default;
+      }
+
+      setStartImage(imagePath);
+    };
+
+    loadStartImage();
+  }, [type, description]);
 
   return (
     <div
@@ -40,7 +40,15 @@ const Toast: React.FC<ToastProps> = ({
       style={{ width: mobile ? "675px" : "fit-content" }}
     >
       <div className="message-wrapper">
-        <Image src={startImage} alt="start-image" className="start-image" />
+        {startImage && (
+          <Image
+            src={startImage}
+            alt="start-image"
+            className="start-image"
+            width={32}
+            height={32}
+          />
+        )}
         <div
           className={`message message-${type}`}
           style={{ width: mobile ? "271px" : "auto" }}
@@ -54,7 +62,7 @@ const Toast: React.FC<ToastProps> = ({
           <div className="description">{description}</div>
           {cta && (
             <button className={`cta cta-${type}`} data-testid="cta-type">
-              {type === "avatar" ? "Button Text" : "Take action"}
+              {type === ToastType.AVATAR ? "Button Text" : "Take action"}
             </button>
           )}
         </div>

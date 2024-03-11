@@ -1,6 +1,6 @@
 import React from "react";
 import { StoryFn, Meta } from "@storybook/react";
-import Toast, { ToastProps, ToastType } from "../components/Toast/Toast";
+import { Toast, ToastProps, ToastType } from "../components/Toast";
 
 export default {
   title: "UI/Toast",
